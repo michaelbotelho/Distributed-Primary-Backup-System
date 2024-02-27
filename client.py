@@ -10,7 +10,7 @@ def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = replication_pb2_grpc.SequenceStub(channel)
         
-        response = stub.Write(replication_pb2.WriteRequest(key="1",value="hello"))
+        response = stub.Write(replication_pb2.WriteRequest(key="3",value="Bonjour"))
         print(response.ack)
         
         

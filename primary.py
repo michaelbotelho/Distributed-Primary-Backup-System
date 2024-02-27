@@ -17,8 +17,8 @@ class PrimaryServerServicer(replication_pb2_grpc.SequenceServicer):
             # Send request to backup, wait for ack from backup
             response = replicate(request)
             if response == "true":         
-                # Apply write if key is unique in backup.txt  #NOT PROPERLY HANDLING DUPLICATE ENTRIES
-                if not DICT.get(key): 
+                # Apply write if key is unique in primary.txt
+                if not key in DICT: 
                     # Add to log   
                     with open("logs/primary.txt", "a") as f:
                         f.write(key + " " + value + "\n")
@@ -28,14 +28,11 @@ class PrimaryServerServicer(replication_pb2_grpc.SequenceServicer):
                         
                     # Send ack (WriteResponse) back to client
                     return replication_pb2.WriteResponse(ack="true")
-
+            else:
+                return replication_pb2.WriteResponse(ack="false")
+            
         except Exception as e:
             print(f"Error performing Write. {e}")      
-                  
-            
-        # When ack(WriteResponse) received, apply write
-        # Return ack(WriteResponse) back to client
-        # Return result to client
 
 
 def replicate(request):
