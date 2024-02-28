@@ -19,12 +19,12 @@ class PrimaryServerServicer(replication_pb2_grpc.SequenceServicer):
             if response == "true":         
                 # Apply write if key is unique in primary.txt
                 if not key in DICT: 
+                    # Add to dictionary 
+                    DICT[key] = value
                     # Add to log   
                     with open("logs/primary.txt", "a") as f:
                         f.write(key + " " + value + "\n")
                         f.close()
-                    # Add to dictionary 
-                    DICT[key] = value
                         
                     # Send ack (WriteResponse) back to client
                     return replication_pb2.WriteResponse(ack="true")
