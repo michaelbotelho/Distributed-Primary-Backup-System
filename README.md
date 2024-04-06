@@ -1,6 +1,9 @@
 # Distributed-Primary-Backup-System
  A Distributed system follwing a Primary-Backup model using a View server with Heartbeats to maintain avalibility. This project is a concept/practice and leverages Google's gRPC Framework.  
- 
+
+## Preview
+https://github.com/michaelbotelho/Distributed-Primary-Backup-System/assets/55448553/debeb934-785f-4962-85aa-60fe87364e6e
+
 ## Tech Stack
  * <a href='https://grpc.io/' target="_blank"><img alt='gRPC' src='https://img.shields.io/badge/gRPC-100000?style=for-the-badge&logo=gRPC&logoColor=244C5A&labelColor=244C5A&color=244C5A'/></a>
 
