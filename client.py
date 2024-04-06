@@ -12,10 +12,11 @@ def run():
             stub = replication_pb2_grpc.SequenceStub(channel)
             
             # Prompt user for input before calling Write
-            key = input("Please enter the key (q to quit): ")
+            print("Please enter the details below to request a write for a key-value pair")
+            key = input("Enter a key (q to quit): ")
             if key == "q":
                 exit(1) 
-            value = input("Please enter the value: ")
+            value = input("Enter a value: ")
             
             # Log write to client.txt
             with open("logs/client.txt", "a") as f:
